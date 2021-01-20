@@ -1,0 +1,25 @@
+Checking account
+login 
+withdraw 
+deposit
+transfer amount to another account
+create account
+close account
+add another person to the account
+remove someone from the account
+create bank statement for a month
+
+
+////////////////////////
+The app is a client desktop that interfaces a mysql 
+database.
+
+Use Case: Login 
+The system loads and displays a menu with two choices
+login and exit. When the customer types the number 
+associated with the login use case, a new screen is 
+displayed. The customer is asked to enter its username 
+and password. If the first attempt failed, a last attempt is
+allowed. After the last attempt, the customer is taken back 
+to the first screen or its customer view with a summary of 
+its account is displayed.
