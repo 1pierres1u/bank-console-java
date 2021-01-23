@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS bankdb;
+CREATE DATABASE IF NOT EXISTS bankdb;
+
+DROP USER IF EXISTS 'admin'@'localhost';
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'bank.99111';
+GRANT CREATE,DROP ON bankdb.* TO 'admin'@'localhost' IDENTIFIED BY 'bank.99111';

@@ -1,0 +1,5 @@
+db_user.sql
+Create the database. Setup the first users and their login credentials.
+username:admin
+password:bankDatabase.1234
+
