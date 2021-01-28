@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS address
  town VARCHAR(50) NOT NULL,
  street VARCHAR(95) NOT NULL,
  apartment_no VARCHAR(5),
- zipcode CHAR(5) NOT NULL
+ zipcode CHAR(5) NOT NULL,
 );
 
 
@@ -17,9 +17,9 @@ DROP TABLE IF EXISTS person;
 CREATE TABLE IF NOT EXISTS person
 (
  id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
- firstName VARCHAR(50) NOT NULL,
- middleName VARCHAR(50),
- lastName VARCHAR(50) NOT NULL,
+ first_name VARCHAR(50) NOT NULL,
+ middle_name VARCHAR(50),
+ last_name VARCHAR(50) NOT NULL,
  sex ENUM('male','female') NOT NULL,
  date_of_birth DATE NOT NULL,
  mobile_phone VARCHAR(15) NOT NULL,

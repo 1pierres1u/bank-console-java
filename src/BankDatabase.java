@@ -47,4 +47,31 @@ class BankDatabase
    }
    return rs;
  }
+ void executeUpdate(String query)
+ {
+   try
+   { stmt.executeUpdate(query); 
+   }
+   catch(Exception e)
+   { 
+     System.out.println(e);
+   }
+ }
+ String insert(String[] data,String table)
+ { String query="insert into ";
+   query += table+"(";
+   int L = data.length/2;
+   int i=1;
+   query += data[0];
+   for(; i<L; i++)
+   { query += ","+data[i];
+   }
+   query += ")values('"+ data[i];
+   i++;
+   for(;i<data.length; i++)
+   {query+="','"+data[i];
+   }
+   query += "')";
+   return query;
+ }
 }

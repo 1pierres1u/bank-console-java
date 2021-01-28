@@ -47,11 +47,63 @@ class BankDatabase
    }
    return rs;
  }
+ void executeUpdate(String query)
+ {
+   try
+   { stmt.executeUpdate(query); 
+   }
+   catch(Exception e)
+   { 
+     System.out.println(e);
+   }
+ }
+ String insert(String[] data,String table)
+ { String query="insert into ";
+   query += table+"(";
+   int L = data.length/2;
+   int i=1;
+   query += data[0];
+   for(; i<L; i++)
+   { query += ","+data[i];
+   }
+   query += ")values('"+ data[i];
+   i++;
+   for(;i<data.length; i++)
+   {query+="','"+data[i];
+   }
+   query += "')";
+   return query;
+ }
+}
+
+class Form
+{
+ Form(){}
+ String[] read(String[] format)
+ { String[] values = new String[format.length*2];
+   int i=0;
+   for(String v:format)
+   { values[i]=to_snake_case(v);
+     i++;
+   }
+   i=format.length;
+   System.out.println("PLZ ENTER");
+   Scanner scanner = new Scanner(System.in);
+   for(String v:format)
+   { System.out.print(format[i-format.length]+":");
+     values[i] = scanner.nextLine();
+     i=i+1;
+   }
+   return values;
+ }
+ String to_snake_case(String s)
+ { return s.trim().toLowerCase().replaceAll("\\s+","_");
+ }
 }
 
 public class BankDatabaseExample
 {
-  public static void main(String[] args)
+  void example_1()
   {  try
      {
      BankDatabase bd = new BankDatabase();
@@ -64,6 +116,25 @@ public class BankDatabaseExample
      { 
        System.out.println(e);
      }
+  }
+  public static void example_2()
+  {  try
+     {
+     BankDatabase bd = new BankDatabase();
+     bd.create_connection();
+     Form F = new Form();
+     String[] data = {"state","city","town","street","apartment no","zipcode"};
+     String query = bd.insert(F.read(data),"address");
+     System.out.println(query);
+     bd.executeUpdate(query);
+     }
+     catch(Exception e)
+     { 
+       System.out.println(e);
+     }
+  }
+  public static void main(String[] args)
+  { example_2();
   }
 }
 
